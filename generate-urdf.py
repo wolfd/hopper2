@@ -123,13 +123,14 @@ class RobotCar:
 
         self.chassis.make_box(length, width, height, mass=0.7)
 
+        # create wheels
         wheel_width = 0.02
         front_left_wheel = self.create_wheel("front_left_wheel", length=wheel_width)
         self.create_joint(
             self.chassis,
             front_left_wheel,
             "front_left_link",
-            axis="0 1 1",
+            axis="0 1 0",
             origin="{} {} {}".format(
                 self.length / 2.0 - front_left_wheel.radius / 2,
                 self.width / 2.0 + front_left_wheel.length / 2,
@@ -150,12 +151,13 @@ class RobotCar:
             )
         )
 
+        # back wheels are at an angle
         back_left_wheel = self.create_wheel("back_left_wheel", length=wheel_width, angle=math.pi / 4)
         self.create_joint(
             self.chassis,
             back_left_wheel,
             "back_left_link",
-            axis="0 1 -1",
+            axis="0 0.7071067812 -0.7071067812",
             origin="{} {} {}".format(
                 -(self.length / 2.0 - back_left_wheel.radius / 2),
                 self.width / 2.0 + back_left_wheel.length / 2,
@@ -168,7 +170,7 @@ class RobotCar:
             self.chassis,
             back_right_wheel,
             "back_right_link",
-            axis="0 1 1",
+            axis="0 0.7071067812 0.7071067812",
             origin="{} {} {}".format(
                 -(self.length / 2.0 - back_right_wheel.radius / 2),
                 -(self.width / 2.0 + back_right_wheel.length / 2),
@@ -205,12 +207,13 @@ class RobotCar:
     def create_link(self, name):
         return RobotLink(self.root, name)
 
-    def create_joint(self, parent, child, name, joint_type="continuous", axis="0 1 0", origin="0 0 0"):
+    def create_joint(self, parent, child, name, joint_type="revolute", axis="0 1 0", origin="0 0 0"):
         joint = SubElement(self.root, "joint", {"name": name, "type": joint_type})
         SubElement(joint, "parent", {"link": parent.name})
         SubElement(joint, "child", {"link": child.name})
         SubElement(joint, "axis", {"xyz": axis})
         SubElement(joint, "origin", {"xyz": origin})
+        SubElement(joint, "limit", {"effort": "0", "velocity": "15000"})
 
         return joint
 
