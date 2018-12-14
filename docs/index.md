@@ -7,9 +7,17 @@ The Arduino talked to the Flysky receiver through its serial connection, which p
 The serial connection could either be used to connect to the receiver or to communicate though USB to the computer, so debugging wasn't possible though normal means when testing the Flysky receiver.
 The solution was to use a Morse code library in combination with an Android app called [Morse Code Agent](https://play.google.com/store/apps/details?id=com.erdatsai.morsecodeagent) which can decode Morse code from lights using the phone camera.
 
-<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/morse-serial.png" height="100" alt="Using Morse code to find out Flysky transmitter axis ranges" />
+
+Using Morse code to find out Flysky transmitter axis ranges:
+
+<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/morse-serial.png" height="300" alt="Using Morse code to find out Flysky transmitter axis ranges" />
+
+Video of transmitter changing LED brightness:
 
 [![Video of transmitter changing LED brightness](http://img.youtube.com/vi/CWW765NBaEE/0.jpg)](http://www.youtube.com/watch?v=CWW765NBaEE "Flysky Controls")
+
+
+Flysky RC Car:
 
 [![Video of RC car](http://img.youtube.com/vi/5P076bGsT1k/0.jpg)](http://www.youtube.com/watch?v=5P076bGsT1k "Flysky RC Car")
 
@@ -30,14 +38,18 @@ The setup we were using was based on suspending the car from a string in a PVC s
 I threaded a rod through the vehicle below the COM to naturally destabilize the vehicle.
 
 
-<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/testing-robot.jpg" height="100" alt="Robot during sprint 3" />
+<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/testing-robot.jpg" height="300" alt="Robot during sprint 3" />
 
 Then an attempt at tuning a PID loop was made, relatively unsuccessfully.
 The motors had trouble spinning up fast enough to fully counteract the effects of gravity on the see-saw setup, and quickly reached saturation, which was undesired.
 Because of the motors we used, our saturation speeds were absurdly high, around 8000 RPM when measured by a tachometer (not seen).
 
 
-<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/tachometer.jpg" height="100" alt="Tachometer reading after a test" />
+Tachometer reading after a test:
+
+<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/tachometer.jpg" height="300" alt="Tachometer reading after a test" />
+
+Video of car spinning up motors:
 
 [![Video of car spinning up motors](http://img.youtube.com/vi/asY8iQv4Igg/0.jpg)](http://www.youtube.com/watch?v=asY8iQv4Igg "Slow Motion - Motors Spinning Up")
 
@@ -54,4 +66,6 @@ I believe trying to rewrite the PID system and tuning it using the simulator wou
 
 In addition to the physics calculations, I completed a version of an URDF generator for the robot that allowed me to quickly test a version of the car that had two wheels on separate 45° axes.
 
-<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/simulator.png" height="100" alt="Picture of simulator working with an interesting wheel configuration" />
+Picture of simulator working with an interesting wheel configuration:
+
+<img src="https://github.com/wolfd/poe-gyro-car/raw/master/docs/media/simulator.png" height="300" alt="Picture of simulator working with an interesting wheel configuration" />
